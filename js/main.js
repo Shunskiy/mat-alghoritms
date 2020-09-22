@@ -39,8 +39,8 @@ function output(matrix) {
     for (let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
             if (matrix[i][j] >= 0) tempString += "";
-            if (j != matrix[j].length - 1) {
-                console.log(matrix[j].length)
+            if (j != matrix[i].length - 1) {
+                console.log(matrix.length, j, matrix[j].length)
                 tempString += matrix[i][j].toFixed(2) + " ";
             }
             else
@@ -101,11 +101,4 @@ window.onload = function() {
     addEvent();
     clearAll();
     Change();
-    // let matrix = [
-    //     [-1, -2, 0],
-    //     [-2, 0, 3],
-    //     [0, -2, -2]
-    // ]
-    // let row = 2;
-    // let column = 3;
 }
