@@ -38,10 +38,21 @@ function output(matrix) {
     let tempString = "";
     for (let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
-            if (matrix[i][j] >= 0) tempString += " ";
-            tempString += matrix[i][j].toFixed(2) + " ";
+            if (matrix[i][j] >= 0) tempString += "";
+            if (j != matrix[j].length - 1) {
+                console.log(matrix[j].length)
+                tempString += matrix[i][j].toFixed(2) + " ";
+            }
+            else
+            {
+                tempString += matrix[i][j].toFixed(2) + "";
+            }
+            
         }
-        tempString += "\n";
+        if (i != matrix.length - 1) {
+            tempString += "\n";
+        }
+        
     }
     outputFiled.value = tempString;
 }
@@ -58,10 +69,10 @@ function jordan(matrix, row, column) {
         }
     }
     for (let i = 0; i < matrix.length; i++) {
-        tempMatrix[i][column] = matrix[i][column] / matrix[row][column] * -1;
+        tempMatrix[i][column] = matrix[i][column] / matrix[row][column];
     }
     for (let i = 0; i < matrix[row].length; i++) {
-        tempMatrix[row][i] = matrix[row][i] / matrix[row][column];
+        tempMatrix[row][i] = matrix[row][i] / matrix[row][column] * -1;
     }
     tempMatrix[row][column] = 1 / matrix[row][column];
     return tempMatrix;
@@ -77,9 +88,19 @@ function clearAll() {
     })
 }
 
+function Change() {
+    let changeButton = document.getElementById("changeButton")
+    changeButton.addEventListener("click", function() {
+        document.getElementById("inputArea").value = '';
+        document.getElementById("inputArea").value = document.getElementById("outputArea").value;
+        document.getElementById("outputArea").value = "";
+    })
+}
+
 window.onload = function() {
     addEvent();
     clearAll();
+    Change();
     // let matrix = [
     //     [-1, -2, 0],
     //     [-2, 0, 3],

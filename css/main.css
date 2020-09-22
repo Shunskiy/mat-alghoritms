@@ -30,6 +30,11 @@
     height: 2em;
 }
 
+#changeButton {
+  width: 10em;
+  height: 2em;
+}
+
 .row_and_col {
     display: flex;
     flex-flow: row wrap;
