@@ -40,7 +40,7 @@ function output(matrix) {
         for (let j = 0; j < matrix[i].length; j++) {
             if (matrix[i][j] >= 0) tempString += "";
             if (j != matrix[i].length - 1) {
-                console.log(matrix.length, j, matrix[j].length)
+                //console.log(matrix.length, j, matrix[j].length)
                 tempString += matrix[i][j].toFixed(2) + " ";
             }
             else
@@ -69,10 +69,10 @@ function jordan(matrix, row, column) {
         }
     }
     for (let i = 0; i < matrix.length; i++) {
-        tempMatrix[i][column] = matrix[i][column] / matrix[row][column];
+        tempMatrix[i][column] = matrix[i][column] / matrix[row][column] * -1;
     }
     for (let i = 0; i < matrix[row].length; i++) {
-        tempMatrix[row][i] = matrix[row][i] / matrix[row][column] * -1;
+        tempMatrix[row][i] = matrix[row][i] / matrix[row][column] ;
     }
     tempMatrix[row][column] = 1 / matrix[row][column];
     return tempMatrix;
