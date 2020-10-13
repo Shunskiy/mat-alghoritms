@@ -57,6 +57,24 @@ function output(matrix) {
     outputFiled.value = tempString;
 }
 
+function deleteColumn(a,n) {
+    /*
+        a - массив. где удаляем строку
+        r - номер строки, которую удаляем
+    */
+    var newArr = [];
+    for(var i = 0; i < a.length; i++) {
+        newArr[i] = [];
+        var row = a[i];
+        for(var j=0;j<row.length;j++) {
+            if(j != n) newArr[i].push(row[j]);
+        }
+    }
+    
+    return newArr;
+}
+
+
 function jordan(matrix, row, column) {
     row -= 1;
     column -= 1;
@@ -75,8 +93,11 @@ function jordan(matrix, row, column) {
         tempMatrix[row][i] = matrix[row][i] / matrix[row][column] ;
     }
     tempMatrix[row][column] = 1 / matrix[row][column];
+    tempMatrix = deleteColumn(tempMatrix, column);
     return tempMatrix;
 }
+
+
 
 function clearAll() {
     let clearButton = document.getElementById("clearButton");
